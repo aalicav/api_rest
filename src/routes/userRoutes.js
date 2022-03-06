@@ -9,6 +9,7 @@ router.post('/', userController.store);
 router.get('/', userController.index);
 router.get('/:id', userController.show);// ao usar essa sintaxe é possivel passar um id como parametro
 router.put('/:id', userController.update);
+router.delete('/:id', userController.delete);
 
 export default router;
 

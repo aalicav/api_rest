@@ -53,7 +53,9 @@ export default class users extends Model {
 
     this.addHook('beforeSave', async (user) => {
       // executa uma função antes de fazer alguma coisa
-      user.password_hash = await bcryptjs.hash(user.password, 8); // tamanho do SALT
+      if (user.password) {
+        user.password_hash = await bcryptjs.hash(user.password, 8); // tamanho do SALT
+      }
     });
 
     return this;
