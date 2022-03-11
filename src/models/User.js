@@ -60,4 +60,11 @@ export default class users extends Model {
 
     return this;
   }
+
+  // eslint-disable-next-line consistent-return
+  passwordIsValid(password) {
+    if (password) {
+      return bcryptjs.compare(password, this.password_hash);
+    }
+  }
 }

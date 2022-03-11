@@ -2,14 +2,16 @@
 /* eslint-disable import/extensions */
 import { Router } from 'express';
 import userController from '../controllers/UserController';
+import loginRequired from '../middlewares/loginRequired';
 
 const router = new Router();
 
-router.post('/', userController.store);
-router.get('/', userController.index);
-router.get('/:id', userController.show);// ao usar essa sintaxe é possivel passar um id como parametro
-router.put('/:id', userController.update);
-router.delete('/:id', userController.delete);
+// router.post('/:id', userController.show);
+// router.get('/', loginRequired, userController.index);
+
+router.post('/', userController.store);// ao usar essa sintaxe é possivel passar um id como parametro
+router.put('/', loginRequired, userController.Update);
+router.delete('/', loginRequired, userController.delete);
 
 export default router;
 
