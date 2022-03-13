@@ -11,7 +11,6 @@ import tokenRoutes from './src/routes/tokenRoutes';
 import alunoRoutes from './src/routes/alunoRoutes';
 import photoRoutes from './src/routes/photoRoutes';
 
-
 class App {
   constructor() {
     this.app = express();
