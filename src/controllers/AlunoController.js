@@ -57,7 +57,7 @@ class AlunoController {
         order:[["id","DESC"],[Foto,"id"]], //Ordena os elementos
         include:{
           model: Foto,
-          attributes:['filename']
+          attributes:['url', 'filename']
         }
       })
       if(!aluno){
