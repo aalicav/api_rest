@@ -1,9 +1,18 @@
 import Aluno from '../models/Aluno';
+import Foto from '../models/Foto';
+
 
 class AlunoController {
   // eslint-disable-next-line class-methods-use-this
   async index(req, res) {
-    const alunos = await Aluno.findAll();
+    const alunos = await Aluno.findAll({
+      attributes:["id","nome","sobrenome","email","idade","peso","altura"],
+      order:[["id","DESC"],[Foto,"id"]], //Ordena os elementos
+      include:{
+        model: Foto,
+        attributes:['filename']
+      }
+    });
     res.json(alunos);
   },
   async store(req,res){
@@ -43,7 +52,14 @@ class AlunoController {
           errors:['Está faltando o Id']
         })
       }
-      const aluno = await Aluno.findByPk(id)
+      const aluno = await Aluno.findByPk(id, {
+        attributes:["id","nome","sobrenome","email","idade","peso","altura"],
+        order:[["id","DESC"],[Foto,"id"]], //Ordena os elementos
+        include:{
+          model: Foto,
+          attributes:['filename']
+        }
+      })
       if(!aluno){
         res.status(400).json({
           errors:['Aluno não existe']

@@ -22,5 +22,6 @@ module.exports = {
     'func-names': 0,
     'import/first': 'off',
     'no-param-reassign': 'off',
+    camelcase: 'off',
   },
 };
